@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>Simpledisplay by FCT</title>
+<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+<link href="externalcss.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="jquery/jquery.gallerax-0.2.js"></script>
+<style type="text/css">
+@import "gallery.css";
+</style>
+</head>
+<body>
+
+<p style="text-align:center;"><font  color="red" size=5 align="center"><u>Compression Technique</u></font></p> <br><br>
+Many sources of information contain redundant data or data that adds little to the stored information. This results in tremendous amounts of data being transferred between client and server applications or computers in general. The obvious solution to the problems of data storage and information transfer is to install additional storage devices and expand existing communication facilities. 
+<br>To do so, however, requires an increase in an organization's operating costs. One method to alleviate a portion of data storage and information transfer is through the representation of data by more efficient code. This article presents a brief introduction to data compression and decompression, and shows how to compress and decompress data, efficiently and conveniently, from within your Java applications using the java.util.zip package. <br><br>
+While it is possible to compress and decompress data using tools such as WinZip, gzip, and Java ARchive (or jar), these tools are used as standalone applications. It is possible to invoke these tools from your Java applications, but this is not a straightforward approach and not an efficient solution. This is especially true if you wish to compress and decompress data on the fly. <br><br>
+Overview of Data Compression: <br>
+The simplest type of redundancy in a file is the repetition of characters. For example, consider the following string:
+
+BBBBHHDDXXXXKKKKWWZZZZ
+
+This string can be encoded more compactly by replacing each repeated string of characters by a single instance of the repeated character and a number that represents the number of times it is repeated. The earlier string can be encoded as follows:
+
+4B2H2D4X4K2W4Z
+
+Here "4B" means four B's, and 2H means two H's, and so on. Compressing a string in this way is called run-length encoding.<br><br>
+
+
+There are many benefits to data compression. The main advantage of it, however, is to reduce storage requirements. Also, for data communications, the transfer of compressed data over a medium results in an increase in the rate of information transfer. Note that data compression can be implemented on existing hardware by software or through the use of special hardware devices that incorporate compression techniques. Figure 2 shows a basic data-compression block diagram.<br><br>
+
+Tools such as WinZip and PKZIP act as both an archiver and a compressor. They compress files and store them in an archive. On the other hand, gzip does not archive files. Therefore, on UNIX, the tar command is usually used to create an archive then the gzip command is used to compress the archived file.
+
+The java.util.zip Package
+Java provides the java.util.zip package for zip-compatible data compression. It provides classes that allow you to read, create, and modify ZIP and GZIP file formats. It also provides utility classes for computing checksums of arbitrary input streams that can be used to validate input data. <br><br>
+ 
+Decompressing and Extracting Data from a ZIP file
+The java.util.zip package provides classes for data compression and decompression. Decompressing a ZIP file is a matter of reading data from an input stream. The java.util.zip package provides a ZipInputStream class for reading ZIP files. A ZipInputStream can be created just like any other input stream. 
+<br><br>
+
+FileInputStream fis = new FileInputStream("figs.zip"); ZipInputStream zin = new    ZipInputStream(new BufferedInputStream(fis)); 
+Once a ZIP input stream is opened, you can read the zip entries using the getNextEntry method which returns a ZipEntry object.<br><br>
+
+Compressing and Archiving Data in a ZIP File
+The ZipOutputStream can be used to compress data to a ZIP file. The ZipOutputStream writes data to an output stream in a ZIP format. There are a number of steps involved in creating a ZIP file.<br><br>
+ 
+ZIP File Properties
+The ZipEntry class describes a compressed file stored in a ZIP file. The various methods contained in this class can be used to set and get pieces of information about the entry. The ZipEntry class is used by the ZipFile and ZipInputStream to read ZIP files, and the ZipOutputStream to write ZIP files.<br><br>
+
+What about JAR Files?
+The Java ARchive (JAR) format is based on the standard ZIP file format with an optional manifest file. If you wish to create JAR files or extract files from a JAR file from within your Java applications, use the java.util.jar package, which provides classes for reading and writing JAR files. Using the classes provided by the java.util.jar package is very similar to using the classes provided by the java.util.zip package as described in this article. Therefore, you should be able to adapt much of the code in this article if you wish to use the java.util.jar package.<br><br>
+
+ </body>
+</html>
